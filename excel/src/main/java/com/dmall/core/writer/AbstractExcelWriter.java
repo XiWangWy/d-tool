@@ -94,10 +94,4 @@ public abstract class AbstractExcelWriter implements Writer {
     public void setDateFormat(SimpleDateFormat simpleDateFormat) {
         threadLocal.set(simpleDateFormat);
     }
-
-    /**
-     * 导出
-     * @return
-     */
-    public abstract Workbook exportWorkBook(List<?> source);
 }

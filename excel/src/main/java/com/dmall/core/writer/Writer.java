@@ -33,7 +33,7 @@ public interface Writer {
      * @param source
      * @return
      */
-    List<?> parseSource(List<?> source);
+    List<FieldData> parseSource(List<?> source);
 
     /**
      * 构建表头
@@ -64,4 +64,18 @@ public interface Writer {
      * @param simpleDateFormat
      */
     void setDateFormat(SimpleDateFormat simpleDateFormat);
+
+    /**
+     * 导出workbook
+     * @param source
+     * @return
+     */
+    default Workbook exportWorkBook(List<?> source){
+        Workbook workbook = createWorkBook();
+        Sheet sheet = creatSheet(workbook);
+        List<FieldData> fieldDataList = parseSource(source);
+        createHeader(sheet,fieldDataList);
+        createValues(sheet,fieldDataList,source);
+        return workbook;
+    }
 }

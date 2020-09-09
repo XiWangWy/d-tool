@@ -22,17 +22,6 @@ import java.util.List;
 public class ExcelWriter extends AbstractExcelWriter{
 
     private static final ThreadLocal<SimpleDateFormat> threadLocalExcel = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss"));
-
-    @Override
-    public Workbook exportWorkBook(List<?> source) {
-        Workbook workbook = createWorkBook();
-        Sheet sheet = creatSheet(workbook);
-        List<FieldData> fieldDataList = parseSource(source);
-        createHeader(sheet,fieldDataList);
-        createValues(sheet,fieldDataList,source);
-        return workbook;
-    }
-
     /**
      * 下载excel
      * @param workbook
